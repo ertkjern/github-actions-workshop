@@ -3,7 +3,7 @@ name: Task 1 - Fix the broken workflow
 on:
   push:
     branches:
-      - main
+      - 'main'
 
 jobs:
   task1:
