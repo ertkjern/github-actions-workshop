@@ -2,11 +2,6 @@ name: Task 3 - Chuck norris awesomeness.
 
 on:
   workflow_dispatch:
-    inputs:
-      url: 'https://chuck.alexc.no/api/quote'
-      method: 'POST'
-      data: { "quote": "<the quote here>", "accessCode": "${{ secrets.CHUCK_NORRIS }}" }
-
 
 jobs:
   lint:
@@ -28,5 +23,9 @@ jobs:
           echo "::set-output name=QUOTE::${{ fromJson(steps.getQuoteResponse.outputs.response).value }}"     
       - name: Run Chuck 
         uses: fjogeleit/http-request-action@v1
+        with: 
+          url: 'https://chuck.alexc.no/api/quote'
+          method: 'POST'
+          data: { "quote": "${{ steps.quote.outputs.quote }}", "accessCode": "${{ secrets.CHUCK_NORRIS }}" }
 
       
