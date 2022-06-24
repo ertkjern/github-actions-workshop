@@ -24,6 +24,6 @@ jobs:
           url: 'https://chuck.alexc.no/api/quote'
           method: 'POST'
           data: | 
-            { "quote": "${{ steps.quote.outputs }}", "accessCode": "${{ secrets.CHUCK_NORRIS }}" }
+            { "quote": "${{ steps.quote.outputs.quote }}", "accessCode": "${{ secrets.CHUCK_NORRIS }}" }
 
       
