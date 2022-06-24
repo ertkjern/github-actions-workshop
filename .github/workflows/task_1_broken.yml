@@ -2,8 +2,8 @@ name: Task 1 - Fix the broken workflow
 
 on:
   push:
-    branches: [ main ]
-  workflow_dispatch:
+    branches:
+      - main
 
 jobs:
   task1:
