@@ -1,0 +1,32 @@
+name: Task 3 - Chuck norris awesomeness.
+
+on:
+  workflow_dispatch:
+    inputs:
+      url: 'https://chuck.alexc.no/api/quote'
+      method: 'POST'
+      data: { "quote": "<the quote here>", "accessCode": "${{ secrets.CHUCK_NORRIS }}" }
+
+
+jobs:
+  lint:
+    name: Job 1 - Run lint
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: ./example-app
+    steps:
+      - name: Fetch quote
+        uses: fjogeleit/http-request-action@v1
+        id: getQuoteResponse
+        with:
+          url: 'https://api.chucknorris.io/jokes/random'
+          method: 'GET'
+      - name: Show Response
+        id: quote
+        run: |
+          echo "::set-output name=QUOTE::${{ fromJson(steps.getQuoteResponse.outputs.response).value }}"     
+      - name: Run Chuck 
+        uses: fjogeleit/http-request-action@v1
+
+      
