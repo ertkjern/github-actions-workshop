@@ -6,7 +6,7 @@ on:
       - 'main'
 
 jobs:
-  task1:
+  lint:
     name: Job 1 - Run lint
     runs-on: ubuntu-latest
     defaults:
@@ -22,9 +22,7 @@ jobs:
       - run: npm install
       - run: npm run lint
 
-  
-jobs:
-  task1:
+  test:
     name: Job 2 - Run tests
     runs-on: ubuntu-latest
     defaults:
@@ -42,8 +40,7 @@ jobs:
       - run: npm test
       - run: npm run build
 
-jobs:
-  task1:
+  build:
     name: Task 3 - Run build
     runs-on: ubuntu-latest
     defaults:
