@@ -5,11 +5,8 @@ on:
 
 jobs:
   lint:
-    name: Job 1 - Run lint
+    name: Chuck norris awesomeness job
     runs-on: ubuntu-latest
-    defaults:
-      run:
-        working-directory: ./example-app
     steps:
       - name: Fetch quote
         uses: fjogeleit/http-request-action@v1
@@ -27,6 +24,6 @@ jobs:
           url: 'https://chuck.alexc.no/api/quote'
           method: 'POST'
           data: | 
-            { "quote": "${{ steps.quote.outputs.quote }}", "accessCode": "${{ secrets.CHUCK_NORRIS }}" }
+            { "quote": "${{ steps.quote.outputs }}", "accessCode": "${{ secrets.CHUCK_NORRIS }}" }
 
       
