@@ -1,0 +1,62 @@
+name: Task 2 - Optimizing the workflow
+
+on:
+  push:
+    branches:
+      - 'main'
+
+jobs:
+  task1:
+    name: Job 1 - Run lint
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: ./example-app
+    steps:
+      - name: Checkout branch
+        uses: actions/checkout@v3
+      - name: Setup node
+        uses: actions/setup-node@v3
+        with:
+          node-version: 16
+      - run: npm install
+      - run: npm run lint
+
+  
+jobs:
+  task1:
+    name: Job 2 - Run tests
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: ./example-app
+    steps:
+      - name: Checkout branch
+        uses: actions/checkout@v3
+      - name: Setup node
+        uses: actions/setup-node@v3
+        with:
+          node-version: 16
+      - run: npm install
+      - run: npx playwright install
+      - run: npm test
+      - run: npm run build
+
+jobs:
+  task1:
+    name: Task 3 - Run build
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: ./example-app
+    steps:
+      - name: Checkout branch
+        uses: actions/checkout@v3
+      - name: Setup node
+        uses: actions/setup-node@v3
+        with:
+          node-version: 16
+      - run: npm install
+      - run: npm run build
+  
+  
