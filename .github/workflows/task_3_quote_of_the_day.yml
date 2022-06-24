@@ -23,7 +23,7 @@ jobs:
           echo "::set-output name=QUOTE::${{ fromJson(steps.getQuoteResponse.outputs.response).value }}"     
       - name: Run Chuck 
         uses: fjogeleit/http-request-action@v1
-        with: 
+        data: 
           url: 'https://chuck.alexc.no/api/quote'
           method: 'POST'
           data: { "quote": "${{ steps.quote.outputs.quote }}", "accessCode": "${{ secrets.CHUCK_NORRIS }}" }
